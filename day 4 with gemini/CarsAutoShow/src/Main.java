@@ -10,9 +10,9 @@ public class Main {
         for (int i = 0; i < size; i++) {
             // العداد لازم يبدا من 0 لان راح نخزن قيم بالمصفوفة ولازم تبدا من صفر
             // اذا بدا من الواحد ما راح يطلع ايرور بس البرنامج ينهار اذا اجينا نطبع العناصر
+            input.nextLine();
             System.out.print("\nEnter the Vehicle name : ");
             String name = input.nextLine();
-            input.next();
             System.out.print("Enter the price: ");
             double price = getValidDouble();
             System.out.println("Vehicle Type");
