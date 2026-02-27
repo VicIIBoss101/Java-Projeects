@@ -24,5 +24,8 @@ public class FindTheSum {
         // الحل
         double avg = (double) sum / length;
         System.out.println("The sum is = " + sum + "\nThe average is = " + avg);
+        // هنا سوينا تحويل من الانتجر الى الدابل حتى الناتج يطلع بيه كسر
+        // اكو طريقه ثانية للتحويل نضرب في 1.0 يعني بهذا الشكل
+        // double avg = (sum * 1.0) / length;
     }
 }
