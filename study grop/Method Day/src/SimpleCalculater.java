@@ -5,7 +5,7 @@ public class SimpleCalculater {
 
     public static void main(String[] args) {
         while (true) {
-            // هنا خليت الشرط تروو حتى يبقى شغال الا يختار ايقاف يلا تزقف
+            // هنا خليت الشرط تروو حتى يبقى شغال الا يختار ايقاف يلا توقف
             System.out.println("---- Menu ----");
             System.err.println("1. do calculation" + "\n" + "2. exit");
             System.out.print("\n" + "enter your choice: ");
