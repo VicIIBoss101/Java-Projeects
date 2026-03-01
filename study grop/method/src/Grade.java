@@ -19,5 +19,6 @@ public class Grade {
         } else {
             System.out.println("F");
         }
+
     }
 }

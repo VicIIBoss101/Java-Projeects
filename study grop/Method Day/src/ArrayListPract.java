@@ -88,7 +88,6 @@ public class ArrayListPract {
                 default:
                     System.out.println("Wrong choice !!");
                     break;
-
             }
         }
     }
