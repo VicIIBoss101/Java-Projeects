@@ -3,6 +3,14 @@ import java.util.Scanner;
 public class RecursionChallenge1 {
     static Scanner input = new Scanner(System.in);
 
+    public static void main(String args[]) {
+        System.out.print("Enter a number to print the countdown and countup for it :");
+        int number = input.nextInt();
+        countDown(number);
+        System.out.println("=====================================");
+        countUp(number);
+    }
+
     static void countDown(int x) {
         if (x > 50) {
             System.out.println("really nigga !! you want to count this number " + x + " ?");
@@ -28,13 +36,5 @@ public class RecursionChallenge1 {
                 System.out.println(y);
             }
         }
-    }
-
-    public static void main(String args[]) {
-        System.out.print("Enter a number to print the countdown and countup for it :");
-        int number = input.nextInt();
-        countDown(number);
-        System.out.println("=====================================");
-        countUp(number);
     }
 }
