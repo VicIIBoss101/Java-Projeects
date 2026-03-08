@@ -7,6 +7,5 @@ public class App {
         System.out.println("Enter a your name: ");
         String name = scanner.nextLine();
         System.out.println("Hello " + name);
-
     }
 }
