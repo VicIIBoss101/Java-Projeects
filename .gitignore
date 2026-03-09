@@ -2,3 +2,9 @@
 /FinalExam/Q1/build/
 /see who it works/nbproject/private/
 /see who it works/build/
+bin/
+out/
+*.class
+.settings/
+.classpath
+.project
