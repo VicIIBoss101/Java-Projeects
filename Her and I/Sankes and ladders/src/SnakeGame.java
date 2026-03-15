@@ -54,68 +54,37 @@ public class SnakeGame {
     static void multiPlayer() {
         System.out.print("How many players will be playing: ");
         int numberOfPlayers = input.nextInt();
-        input.nextLine();
-        Player[] players = new Player[numberOfPlayers];
-        // store the names
-        for (int i = 0; i < players.length; i++) {
-            System.out.print("name of player number " + (i + 1) + ". : ");
-            String playerName = input.nextLine();
-            players[i] = new Player(playerName);
-        }
-        while (true) {
+        if (numberOfPlayers > 4) {
+            System.out.println("hell nah bro it's only for 4 players try again");
+            return;
+        } else {
+            input.nextLine();
+            Player[] players = new Player[numberOfPlayers];
+            // store the names
             for (int i = 0; i < players.length; i++) {
-                if (players[i].getPosition() == 100) {
-                    System.out.println(players[i].getName() + " winnn !");
-                    return;
-                }
-                System.out.println("\nNow its " + players[i].getName() + " turn ");
-                System.out.println("\nPress enter to roll the dice");
-                input.nextLine();
-                int dice = players[i].rollDice();
-                System.out.println("you've got: " + dice);
-                players[i].move(dice);
-                System.out.println("Your current position: " + players[i].getPosition());
-                players[i].checkPositon();
+                System.out.print("name of player number " + (i + 1) + ". : ");
+                String playerName = input.nextLine();
+                players[i] = new Player(playerName);
             }
-        }
-    }
-
-    static int snakeTrap(int pos) {
-        int[] trap = new int[101];
-        trap[17] = 7;
-        trap[54] = 34;
-        trap[62] = 19;
-        trap[64] = 60;
-        trap[87] = 24;
-        trap[93] = 73;
-        trap[95] = 75;
-        trap[98] = 79;
-        // now let's check
-        if (trap[pos] != 0) {
-            System.out.println("oops ! the snakc ate you :(");
-            pos = trap[pos];
-            System.out.println("your current postion now is : " + pos);
-            return pos;
-        } else {
-            return pos;
-        }
-    }
-
-    static int ladderReach(int pos) {
-        int[] ladder = new int[101];
-        ladder[1] = 38;
-        ladder[4] = 14;
-        ladder[21] = 42;
-        ladder[71] = 91;
-        ladder[80] = 100;
-        // now let's check
-        if (ladder[pos] != 0) {
-            System.out.println("you've reached the ladder :o");
-            pos = ladder[pos];
-            System.out.println("Your current postion is : " + pos);
-            return pos;
-        } else {
-            return pos;
+            while (true) {
+                for (int i = 0; i < players.length; i++) {
+                    System.out.println("\nNow its " + players[i].getName() + " turn ");
+                    System.out.println("\nPress enter to roll the dice");
+                    input.nextLine();
+                    //
+                    int dice = players[i].rollDice();
+                    System.out.println("you've got: " + dice);
+                    players[i].move(dice);
+                    //
+                    System.out.println("Your current position: " + players[i].getPosition());
+                    players[i].checkPositon();
+                    //
+                    if (players[i].getPosition() == 100) {
+                        System.out.println(players[i].getName() + " winnn !");
+                        return;
+                    }
+                }
+            }
         }
     }
 }
