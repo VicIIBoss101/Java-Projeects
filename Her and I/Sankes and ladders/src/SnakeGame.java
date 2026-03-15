@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class SnakeGame {
     static Scanner input = new Scanner(System.in);
-    static int playerPos = 0;
+    public static int playerPos = 0;
 
     public static void main(String[] args) {
         while (true) {
             //
             System.out.println("---- Snakes and ladders ----");
-            System.out.println("1. play Vs computer");
+            System.out.println("1. single player");
             System.out.println("2. play Vs your friend (up to 4 players )");
             System.out.println("3. exit");
             //
@@ -21,11 +21,11 @@ public class SnakeGame {
                     singlePlayer();
                     break;
                 case 2:
+                    multiPlayer();
                     break;
                 case 3:
                     System.out.println("You closed the app");
-                    return ;
-
+                    return;
                 default:
                     System.out.println("wrong choice !");
                     break;
@@ -34,31 +34,49 @@ public class SnakeGame {
     }
 
     static void singlePlayer() {
-        playerPos = 0;
         System.out.println("You enterd the single player mode");
+        Player player1 = new Player("user");
         while (true) {
-            //
-            int dice = (int) (Math.random() * 6) + 1;
-            if (playerPos == 100) {
-                System.out.println("You winnn !! ");
+            if (player1.getPosition() == 100) {
+                System.out.println("you winnn ! ");
                 return;
-                //
-            } else if (playerPos < 100) {
-                System.out.println("press enter to roll the dice\n : ");
-                input.nextLine();
-                playerPos += dice;
-                System.out.println("you've got " + dice);
-                System.out.println("Your current postion is : " + playerPos);
-                //
-            } 
-            if (playerPos > 100) {
-                System.out.println("you have reahced over 100 try again");
-                playerPos -= dice;
-                continue;
             }
-            // check the player if he reached trap or ladder
-            playerPos = snakeTrap(playerPos);
-            playerPos = ladderReach(playerPos);
+            System.out.print("\nPress enter to roll the dice");
+            input.nextLine();
+            int dice = player1.rollDice();
+            System.out.println("You rolled the dice and got: " + dice);
+            player1.move(dice);
+            System.out.println("You current postion: " + player1.getPosition());
+            player1.checkPositon();
+        }
+    }
+
+    static void multiPlayer() {
+        System.out.print("How many players will be playing: ");
+        int numberOfPlayers = input.nextInt();
+        input.nextLine();
+        Player[] players = new Player[numberOfPlayers];
+        // store the names
+        for (int i = 0; i < players.length; i++) {
+            System.out.print("name of player number " + (i + 1) + ". : ");
+            String playerName = input.nextLine();
+            players[i] = new Player(playerName);
+        }
+        while (true) {
+            for (int i = 0; i < players.length; i++) {
+                if (players[i].getPosition() == 100) {
+                    System.out.println(players[i].getName() + " winnn !");
+                    return;
+                }
+                System.out.println("\nNow its " + players[i].getName() + " turn ");
+                System.out.println("\nPress enter to roll the dice");
+                input.nextLine();
+                int dice = players[i].rollDice();
+                System.out.println("you've got: " + dice);
+                players[i].move(dice);
+                System.out.println("Your current position: " + players[i].getPosition());
+                players[i].checkPositon();
+            }
         }
     }
 
