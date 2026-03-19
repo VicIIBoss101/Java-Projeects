@@ -5,19 +5,19 @@ public class Main {
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        //
+
         ArrayList<Account> customers = new ArrayList<>();
         customers.add(new Account(101, "Ali Hadi", 500.55));
         customers.add(new Account(102, "Hussain Ali", 700.5));
         customers.add(new Account(103, "Mortada Alaa", 5400.88));
-        //
+
         while (true) {
             System.out.println("---- Mini Bank ----");
             System.out.println("1. customer menu" + "\n" + "2. employee menu" + "\n" + "3. exit");
             System.out.print("Enter you choice: ");
             int menuChoice = input.nextInt();
             input.nextLine();
-            //
+
             switch (menuChoice) {
                 case 1:
                     CustomerService service = new CustomerService();
@@ -32,7 +32,7 @@ public class Main {
                     return;
                 default:
                     System.out.println("Wrong choice !!");
-                break;
+                    break;
             }
         }
     }

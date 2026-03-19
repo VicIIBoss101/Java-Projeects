@@ -18,7 +18,7 @@ public class Account {
 
     public void deposit(double amount) {
         System.out.println(
-                "You balance before the deposit" + balance + "\n" + "you balance after deposit: " + (amount + balance));
+                "You balance before the deposit: " + balance + "\n" + "you balance after deposit: " + (amount + balance));
         this.balance += amount;
     }
 
@@ -35,7 +35,8 @@ public class Account {
     public int getAccountNum() {
         return this.accountNum;
     }
-    public String getInfo () {
+
+    public String getInfo() {
         return "Account num " + accountNum + "\nName holder: " + name + "\nBalance: " + balance;
     }
 }

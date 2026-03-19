@@ -2,11 +2,11 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class CustomerService {
-    public void customerMenu(ArrayList<Account> customers , Scanner input) {
+    public void customerMenu(ArrayList<Account> customers, Scanner input) {
         System.out.println("-- Customer Menu --");
         System.out.print("Enter you account number: ");
         int accNumber = input.nextInt();
-        //
+        
         Account foundAccount = null;
         for (Account acc : customers) {
             if (acc.getAccountNum() == accNumber) {
