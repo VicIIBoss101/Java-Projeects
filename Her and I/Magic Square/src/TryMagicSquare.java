@@ -1,4 +1,3 @@
-import java.text.CollationElementIterator;
 import java.util.Scanner;
 
 public class TryMagicSquare {
@@ -17,15 +16,10 @@ public class TryMagicSquare {
             int nextCol = col + 1;
             if (nextRow > magicSquare.length || nextRow < magicSquare.length) {
                 row = magicSquare.length - 1;
-            } else {
-                row = nextRow;
             }
             if (nextCol > (magicSquare[0].length -1)) {
                 col = magicSquare[0].length - 1;
-            } else {
-                col = nextCol;
             }
-
 
             System.out.println();
         }
