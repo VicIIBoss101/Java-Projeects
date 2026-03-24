@@ -2,8 +2,9 @@
 public class Transpose {
     public static void main(String[] args) {
         int[][] number = {
-                { 10, 20, 30 },
-                { 40, 50, 60 } };
+                { 10, 20 },
+                { 40, 50 },
+                { 70, 80 } };
         int row = number.length;
         int col = number[0].length;
         int[][] transpose = new int[col][row];
@@ -16,8 +17,8 @@ public class Transpose {
             System.out.println();
         }
 
-        int rowTranspose = transpose.length;
-        int colTranspose = transpose[0].length;
+        int rowTranspose = col;
+        int colTranspose = row;
         System.out.println("The Transpose");
         for (int i = 0; i < rowTranspose; i++) {
             for (int j = 0; j < colTranspose; j++) {
