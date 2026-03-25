@@ -6,27 +6,39 @@ public class TryMagicSquare {
     public static void main(String[] args) {
         System.out.print("Enter a number to generate a magic square for it : ");
         int number = input.nextInt();
+        if (number % 2 == 0) {
+            System.out.println("The number must be an odd number!");
+            return;
+        }
         int row = 0;
         int col = number / 2;
         int[][] magicSquare = new int[number][number];
         for (int i = 1; i <= number * number; i++) {
             magicSquare[row][col] = i;
-            System.out.print(magicSquare[row][col] + "  ");
+            for (int[] k : magicSquare) {
+                for (int j : k) {
+                    System.out.print(j + "\t");
+                }
+                System.out.println();
+            }
             int nextRow = row - 1;
             int nextCol = col + 1;
-            if (nextRow > magicSquare.length || nextRow < magicSquare.length) {
-                row = magicSquare.length - 1;
-            }
-            if (nextCol > (magicSquare[0].length -1)) {
-                col = magicSquare[0].length - 1;
-            }
 
-            System.out.println();
-        }
-        for (int[] i : magicSquare) {
-            for (int j : i) {
-                System.out.print(j + "\t");
+            if (nextRow < 0 || nextRow > magicSquare.length) {
+                row = magicSquare.length - 1;
+            } else {
+                row = nextRow;
             }
+            if (nextCol > (magicSquare[0].length - 1)) {
+                col = nextCol - (magicSquare[0].length);
+            } else {
+                col = nextCol;
+            }
+            if (magicSquare[row][col] != 0 ) {
+                row += 2;
+                col -= 1;
+            }
+            
             System.out.println();
         }
     }
