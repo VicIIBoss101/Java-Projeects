@@ -15,12 +15,7 @@ public class TryMagicSquare {
         int[][] magicSquare = new int[number][number];
         for (int i = 1; i <= number * number; i++) {
             magicSquare[row][col] = i;
-            for (int[] k : magicSquare) {
-                for (int j : k) {
-                    System.out.print(j + "\t");
-                }
-                System.out.println();
-            }
+            int currentRow = row, currentCol = col;
             int nextRow = row - 1;
             int nextCol = col + 1;
 
@@ -34,11 +29,15 @@ public class TryMagicSquare {
             } else {
                 col = nextCol;
             }
-            if (magicSquare[row][col] != 0 ) {
-                row += 2;
-                col -= 1;
+            if (magicSquare[row][col] != 0) {
+                row = currentRow + 1;
+                col = currentCol;
             }
-            
+        }
+        for (int[] k : magicSquare) {
+            for (int j : k) {
+                System.out.print(j + "\t");
+            }
             System.out.println();
         }
     }
