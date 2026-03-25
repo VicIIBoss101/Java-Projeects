@@ -19,7 +19,7 @@ public class TryMagicSquare {
             int nextRow = row - 1;
             int nextCol = col + 1;
 
-            if (nextRow < 0 || nextRow > magicSquare.length) {
+            if (nextRow < 0 || nextRow > (magicSquare.length - 1)) {
                 row = magicSquare.length - 1;
             } else {
                 row = nextRow;
