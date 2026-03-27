@@ -5,7 +5,7 @@ public class TryMagicSquare {
 
     public static void main(String[] args) {
         System.out.print("Enter a number to generate a magic square for it : ");
-        int number = input.nextInt();
+        int number = getValidInt();
         if (number % 2 == 0) {
             System.out.println("The number must be an odd number!");
             return;
@@ -39,6 +39,16 @@ public class TryMagicSquare {
                 System.out.print(j + "\t");
             }
             System.out.println();
+        }
+    }
+    static int getValidInt(){
+        while (true) {
+            try {
+                return input.nextInt();
+            } catch (Exception e) {
+                System.out.print("Please Enter just numbers! ");
+                input.next();
+            }
         }
     }
 }

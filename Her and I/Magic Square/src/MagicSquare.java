@@ -11,7 +11,7 @@ public class MagicSquare {
         int col = n / 2;
         for (int i = 1; i <= n * n; i++) {
             magic[row][col] = i;
-            int nextRow = (row - 1 +n) %n ;
+            int nextRow = (row - 1 +n ) %n ;
             int nextCol = (col + 1) %n;
             if (magic[nextRow][nextCol] != 0) {
                 row = (row + 1);

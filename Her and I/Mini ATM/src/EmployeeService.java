@@ -59,6 +59,7 @@ public class EmployeeService {
         int accountIndex = -1;
 
         for (int i = 0; i < customers.size(); i++) {
+            targetedAccount = customers.get(i);
             if (targetedAccount.getAccountNum() == accountNO) {
                 targetedAccount = customers.get(i);
                 accountIndex = i;
