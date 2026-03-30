@@ -7,6 +7,7 @@ public class Employee {
     public void employeeMenu(ArrayList<Product> products, Scanner input) {
         boolean access = false;
         while (!access) {
+            System.out.println("===============================" + "\n" + "---- Mini Shop ----");
             System.out.print("Enter employee password: ");
             String pass = input.nextLine();
             if (pass.equals(employeePass)) {

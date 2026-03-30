@@ -1,9 +1,11 @@
 public class Product {
+    private int no ;
     private String name;
     private int quantity;
     private double price;
 
-    public Product(String name, int quantity, double price) {
+    public Product(int no , String name, int quantity, double price) {
+        this.no = no;
         this.name = name;
         this.quantity = quantity;
         this.price = price;
@@ -11,7 +13,7 @@ public class Product {
 
     public void productInfo() {
         System.out.println("==============");
-        System.out.println(this.name + "\n" + "price: " + this.price +" $" + "\n" + "quantitiy: " + this.quantity);
+        System.out.println(  this.no +". " + this.name + "\n" + "price: " + this.price +" $" + "\n" + "quantitiy: " + this.quantity);
     }
 
     public int getQuantity() {
@@ -20,5 +22,11 @@ public class Product {
 
     public double getPrice() {
         return this.price;
+    }
+    public int getProdectNo () {
+        return this.no;
+    }
+    public void updateQuant (int amount ) {
+        quantity = this.quantity - amount ;
     }
 }
