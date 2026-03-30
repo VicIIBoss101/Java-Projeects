@@ -10,11 +10,11 @@ public class Summation {
         while (summation <= total) {
             System.out.print("Enter a number: ");
             int number = input.nextInt();
+            if ( number < 0 ) {
+                break ;
+            }
             summation += number;
             counter++;
-            if (number < 0) {
-                break;
-            }
         }
         System.out.println("Number inputs : " + counter);
         System.out.println("Number of Accept numbers: " + (counter - 1));
