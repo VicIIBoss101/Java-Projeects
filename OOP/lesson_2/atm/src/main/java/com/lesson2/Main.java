@@ -1,9 +1,10 @@
 package com.lesson2;
 
 public class Main {
+
     public static void main(String[] args) {
 
-        Account a1 = new Account() , a2 = new Account();
+        Account a1 = new Account(), a2 = new Account();
         a1.insert(4, "belal", 5300);
         a2.insert(77, "zain", 300);
 

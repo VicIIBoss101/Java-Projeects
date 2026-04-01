@@ -1,6 +1,7 @@
 package com.lesson2;
 
 public class Account {
+
     private int accountNo;
     private String name;
     private float amount;
@@ -34,4 +35,5 @@ public class Account {
     public String toString() {
         return "AccountNO " + accountNo + ", Name: " + name + ", amount: " + amount;
     }
+
 }

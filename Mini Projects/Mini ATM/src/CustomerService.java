@@ -6,6 +6,7 @@ public class CustomerService {
         System.out.println("-- Customer Menu --");
         System.out.print("Enter you account number: ");
         int accNumber = input.nextInt();
+        input.nextLine();
         
         Account foundAccount = null;
         for (Account acc : customers) {
@@ -43,11 +44,13 @@ public class CustomerService {
                 case 1:
                     System.out.print("Enter the amount you want to deposit: ");
                     double depositAmount = input.nextDouble();
+                    input.nextLine();
                     foundAccount.deposit(depositAmount);
                     break;
                 case 2:
                     System.out.print("Enter the amount you want to withdraw: ");
                     double withdrawAmount = input.nextDouble();
+                    input.nextLine();
                     foundAccount.withdraw(withdrawAmount);
                     break;
                 case 3:
