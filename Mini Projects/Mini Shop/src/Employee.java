@@ -28,6 +28,9 @@ public class Employee {
                 case 1:
                     showAllItems(products, input);
                     break;
+                case 2:
+                    editItems(products, input);
+                    break;
 
                 case 3:
                     return;
@@ -44,11 +47,50 @@ public class Employee {
                 items.productInfo();
 
             }
-            System.out.print("Do you want to return to employee menu? y / n: ");
+            System.out.print("Type y to return: ");
             char choice = input.nextLine().toLowerCase().charAt(0);
             if (choice == 'y') {
                 break;
             }
         }
     }
+
+    static void editItems(ArrayList<Product> products, Scanner input) {
+        boolean editing = true;
+        while (editing) {
+            System.out.print("1. edit item details \n2. delete item\n3. add item\n4. return: ");
+            int choice = Main.getValidInt();
+            switch (choice) {
+                case 1:
+                    editItemDetails(products, input);
+                    break;
+                case 2:
+                    deleteItem(products, input);
+                    break;
+                case 3:
+                    addItem(products, input);
+                    break;
+                case 4:
+                    editing = false;
+                    break;
+
+                default:
+                    System.out.println("Wrong choice !!");
+                    break;
+            }
+        }
+    }
+
+    private static void addItem(ArrayList<Product> products, Scanner input) {
+
+    }
+
+    private static void deleteItem(ArrayList<Product> products, Scanner input) {
+
+    }
+
+    private static void editItemDetails(ArrayList<Product> products, Scanner input) {
+
+    }
+
 }
