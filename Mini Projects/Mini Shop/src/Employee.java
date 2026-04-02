@@ -58,7 +58,7 @@ public class Employee {
     static void editItems(ArrayList<Product> products, Scanner input) {
         boolean editing = true;
         while (editing) {
-            System.out.print("1. edit item details \n2. delete item\n3. add item\n4. return: ");
+            System.out.print("1. edit item details \n2. delete item\n3. add item\n4. return \n : ");
             int choice = Main.getValidInt();
             input.nextLine();
             switch (choice) {
@@ -83,11 +83,26 @@ public class Employee {
     }
 
     private static void addItem(ArrayList<Product> products, Scanner input) {
-        System.out.print("Enter item name: ");
-        String itemName = input.nextLine();
-        System.out.print("Enter item price: ");
-        int itemPrice = Main.getValidInt();
-        
+        boolean adding = true;
+        while (adding) {
+            System.out.print("Enter item name: ");
+            String itemName = input.nextLine();
+            System.out.print("Enter item price: ");
+            int itemPrice = Main.getValidInt();
+            input.nextLine();
+            System.out.print("Enter Quantity: ");
+            int itemQuantity = Main.getValidInt();
+            input.nextLine();
+            int itemNo = (products.size()) + 1;
+            products.add(new Product(itemNo, itemName, itemQuantity, itemPrice));
+            products.get(products.size()).productInfo();
+            System.out.print("\n" + "Do you want to add another item? y / n: ");
+            char decide = input.nextLine().toLowerCase().charAt(0);
+            if (decide == 'n') {
+                adding = false;
+                break;
+            }
+        }
     }
 
     private static void deleteItem(ArrayList<Product> products, Scanner input) {
@@ -119,7 +134,26 @@ public class Employee {
     }
 
     private static void editItemDetails(ArrayList<Product> products, Scanner input) {
-
+        boolean editing = true;
+        while (editing) {
+            System.out.print("Enter item index: ");
+            int index = Main.getValidInt();
+            input.nextLine();
+            index -= 1;
+            System.out.print("1. edit item price " + "\n" + "2. edit item quantity : ");
+            int choice = Main.getValidInt();
+            input.nextLine();
+            switch (choice) {
+                case 1:
+                    System.out.println("Price before change: " +products.get(index).getPrice());
+                    
+                    break;
+                case 2:
+                    break;
+                default:
+                    System.out.println("Wrong number!!");
+                    break;
+            }
+        }
     }
-
 }
