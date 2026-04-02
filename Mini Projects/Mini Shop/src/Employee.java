@@ -60,6 +60,7 @@ public class Employee {
         while (editing) {
             System.out.print("1. edit item details \n2. delete item\n3. add item\n4. return: ");
             int choice = Main.getValidInt();
+            input.nextLine();
             switch (choice) {
                 case 1:
                     editItemDetails(products, input);
@@ -82,10 +83,38 @@ public class Employee {
     }
 
     private static void addItem(ArrayList<Product> products, Scanner input) {
-
+        System.out.print("Enter item name: ");
+        String itemName = input.nextLine();
+        System.out.print("Enter item price: ");
+        int itemPrice = Main.getValidInt();
+        
     }
 
     private static void deleteItem(ArrayList<Product> products, Scanner input) {
+        boolean deleting = true;
+        while (deleting) {
+            System.out.print("Enter Item number: ");
+            int index = Main.getValidInt();
+            input.nextLine();
+            index -= 1;
+            if (index > products.size()) {
+                System.out.println("sorry this item is not in the store! or you enterd a wrong number");
+            } else {
+                products.get(index).productInfo();
+                System.out.print("Do you watn to delete this item ? yes / no: ");
+                char conform = input.nextLine().toLowerCase().charAt(0);
+                if (conform == 'y') {
+                    products.remove(index);
+                    System.out.println("The item has been removed! ");
+                }
+            }
+            System.out.print("Do you want to delete another item? y / n: ");
+            char decide = input.nextLine().toLowerCase().charAt(0);
+            if (decide == 'n') {
+                deleting = false;
+                break;
+            }
+        }
 
     }
 
