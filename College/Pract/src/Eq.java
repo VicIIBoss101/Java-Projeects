@@ -9,8 +9,8 @@ public class Eq {
         double s = 0;
         double term1 = 3;
         System.out.print("S = ");
-        for (int i = 1; i <= n; i ++) {
-            double term = ((i*1.0) / (term1));
+        for (int i = 1; i <= n; i++) {
+            double term = ((i * 1.0) / (term1));
             s += term;
             System.out.print(i + "/" + (term1) + "  +  ");
             term1 += 2;
