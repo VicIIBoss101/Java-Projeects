@@ -112,10 +112,18 @@ public class Employee {
             int index = Main.getValidInt();
             input.nextLine();
             index -= 1;
+
             if (index > products.size()) {
                 System.out.println("sorry this item is not in the store! or you enterd a wrong number");
             } else {
-                products.get(index).productInfo();
+                Product targetedPro = null;
+                for (int i = 0; i < products.size(); i++) {
+                    targetedPro = products.get(i);
+                    if (targetedPro.getProdectNo() == (index + 1)) {
+                        break;
+                    }
+                }
+                targetedPro.productInfo();
                 System.out.print("Do you watn to delete this item ? yes / no: ");
                 char conform = input.nextLine().toLowerCase().charAt(0);
                 if (conform == 'y') {
@@ -130,7 +138,6 @@ public class Employee {
                 break;
             }
         }
-
     }
 
     private static void editItemDetails(ArrayList<Product> products, Scanner input) {
@@ -145,8 +152,10 @@ public class Employee {
             input.nextLine();
             switch (choice) {
                 case 1:
-                    System.out.println("Price before change: " +products.get(index).getPrice());
-                    
+                    System.out.print("Enter the new price: ");
+                    int newPrice = Main.getValidInt();
+                    input.nextLine();
+
                     break;
                 case 2:
                     break;

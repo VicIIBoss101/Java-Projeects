@@ -15,6 +15,7 @@ public class Eq {
             System.out.print(i + "/" + (term1) + "  +  ");
             term1 += 2;
         }
+        System.out.print("\b\b\b   \b\b\b");
         System.out.println("\n" + "S = " + s);
     }
 }

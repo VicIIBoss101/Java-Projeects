@@ -2,6 +2,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Customer {
+    static ArrayList<Product> cart = new ArrayList<>();
+
     public void customerMenu(ArrayList<Product> products, Scanner input) {
 
         while (true) {

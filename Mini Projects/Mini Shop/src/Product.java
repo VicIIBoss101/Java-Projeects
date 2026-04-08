@@ -33,8 +33,14 @@ public class Product {
         quantity = this.quantity - amount;
     }
 
+    public void updateNo(int newNo) {
+        this.no = newNo;
+    }
+
     public void updatePrice(int newPrice) {
         System.out.println("The price before change: " + this.price);
+        this.price = newPrice;
+        System.out.println("The price after change: " + this.price);
 
     }
 }
