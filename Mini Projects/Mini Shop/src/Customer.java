@@ -44,7 +44,7 @@ public class Customer {
             System.out.print("Enter the item number: ");
             int itemIndex = Main.getValidInt();
             input.nextLine();
-            if (itemIndex > products.size()) {
+            if (itemIndex > products.size() || itemIndex < 0) {
                 System.out.println("there is no item!");
                 continue;
             }
@@ -95,11 +95,34 @@ public class Customer {
             int i = 1;
             for (Product cartItems : cart) {
                 System.out.println(i + " " + cartItems.getName());
+                i++;
+            }
+            if (cart.isEmpty()) {
+                System.out.println("The cart is empty!");
+                deleting = false;
+                break;
             }
             System.out.print("Enter item number: ");
             int itemNum = Main.getValidInt();
             input.nextLine();
-            
+            itemNum -= 1;
+            if (itemNum > cart.size() || itemNum < 0) {
+                System.out.println("Wrong number!");
+                continue;
+            }
+            System.out.print("Do you want to delete: " + cart.get(itemNum).getName() + " Y / N: ");
+            char del = input.nextLine().toLowerCase().charAt(0);
+            if (del == 'n') {
+                continue;
+            }
+            cart.remove(itemNum);
+            System.out.println("The item have been removed!");
+            System.out.print("Do you want to delete another item? Y / N: ");
+            char decide = input.nextLine().toLowerCase().charAt(0);
+            if (decide == 'n') {
+                deleting = false;
+                break;
+            }
         }
     }
 
@@ -119,6 +142,7 @@ public class Customer {
             total += (items.getPrice());
         }
         System.out.println("The Total = " + total + " $");
+        cart.clear();
         try {
             Thread.sleep(1500);
         } catch (Exception e) {
