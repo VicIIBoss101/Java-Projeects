@@ -31,7 +31,6 @@ public class Employee {
                 case 2:
                     editItems(products, input);
                     break;
-
                 case 3:
                     return;
                 default:
@@ -110,21 +109,11 @@ public class Employee {
             int index = Main.getValidInt();
             input.nextLine();
             index -= 1;
-            if (products.size() < index) {
-                System.out.println("wrong index try again!");
-                continue;
-            }
             if (index > products.size()) {
                 System.out.println("sorry this item is not in the store! or you enterd a wrong number");
+                continue;
             } else {
-                Product targetedPro = null;
-                for (int i = 0; i < products.size(); i++) {
-                    targetedPro = products.get(i);
-                    if (targetedPro.getProdectNo() == (index + 1)) {
-                        break;
-                    }
-                }
-                targetedPro.productInfo();
+                products.get(index).productInfo();
                 System.out.print("Do you watn to delete this item ? yes / no: ");
                 char conform = input.nextLine().toLowerCase().charAt(0);
                 if (conform == 'y') {
@@ -135,7 +124,6 @@ public class Employee {
                     }
                 }
             }
-
             System.out.print("Do you want to delete another item? y / n: ");
             char decide = input.nextLine().toLowerCase().charAt(0);
             if (decide == 'n') {
