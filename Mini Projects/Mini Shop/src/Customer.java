@@ -19,7 +19,7 @@ public class Customer {
                     addToCart(products, input);
                     break;
                 case 2:
-                    editCart(cart, input);
+                    editCart(cart, products, input);
                     break;
                 case 3:
                     checkOut(cart, input);
@@ -44,9 +44,14 @@ public class Customer {
             System.out.print("Enter the item number: ");
             int itemIndex = Main.getValidInt();
             input.nextLine();
+            if (itemIndex > products.size()) {
+                System.out.println("there is no item!");
+                continue;
+            }
             itemIndex -= 1;
             cart.add(products.get(itemIndex));
-            System.out.println(products.get(itemIndex).getName() + "\n" + products.get(itemIndex).getPrice());
+            System.out.println("========\n" + products.get(itemIndex).getName() + "\n" + "========\n"
+                    + products.get(itemIndex).getPrice());
             System.out.print("Do you want to add another item? Y / N: ");
             char decide = input.nextLine().toLowerCase().charAt(0);
             if (decide == 'n') {
@@ -56,7 +61,7 @@ public class Customer {
         }
     }
 
-    void editCart(ArrayList<Product> cart, Scanner input) {
+    void editCart(ArrayList<Product> cart, ArrayList<Product> products, Scanner input) {
         if (cart.isEmpty()) {
             System.err.println("the cart is empty!");
             try {
@@ -66,9 +71,36 @@ public class Customer {
             return;
         }
         for (Product userCart : cart) {
-            System.out.println(userCart.getName() + "\n" + userCart.getPrice());
+            System.out.println("======\n" + userCart.getName() + "\n" + userCart.getPrice());
         }
+        System.out.print("Do you want to \n1. add an item\n2. delete item form the cart: ");
+        int cartEdit = Main.getValidInt();
+        input.nextLine();
+        switch (cartEdit) {
+            case 1:
+                addToCart(products, input);
+                break;
+            case 2:
+                deleteFromCart(cart, input);
+                break;
+            default:
+                System.out.println("Wrong number! try again");
+                break;
+        }
+    }
 
+    private static void deleteFromCart(ArrayList<Product> cart, Scanner input) {
+        boolean deleting = true;
+        while (deleting) {
+            int i = 1;
+            for (Product cartItems : cart) {
+                System.out.println(i + " " + cartItems.getName());
+            }
+            System.out.print("Enter item number: ");
+            int itemNum = Main.getValidInt();
+            input.nextLine();
+            
+        }
     }
 
     void checkOut(ArrayList<Product> userCart, Scanner input) {
@@ -79,6 +111,17 @@ public class Customer {
             } catch (Exception e) {
             }
             return;
+        }
+        double total = 0;
+        System.out.println("your cart have: ");
+        for (Product items : cart) {
+            System.out.println(items.getName() + " " + items.getPrice() + " $");
+            total += (items.getPrice());
+        }
+        System.out.println("The Total = " + total + " $");
+        try {
+            Thread.sleep(1500);
+        } catch (Exception e) {
         }
     }
 }
