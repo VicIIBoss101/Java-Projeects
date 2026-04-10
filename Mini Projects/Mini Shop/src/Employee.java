@@ -92,7 +92,7 @@ public class Employee {
             input.nextLine();
             int itemNo = (products.size()) + 1;
             products.add(new Product(itemNo, itemName, itemQuantity, itemPrice));
-            products.get(products.size()).productInfo();
+            products.get(itemNo - 1).productInfo();
             System.out.print("\n" + "Do you want to add another item? y / n: ");
             char decide = input.nextLine().toLowerCase().charAt(0);
             if (decide == 'n') {

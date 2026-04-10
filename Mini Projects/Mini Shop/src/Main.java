@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         ArrayList<Product> products = new ArrayList<>();
-        
+
         products.add(new Product(1 ,"Tomato", 50, 3));
         products.add(new Product(2 ,"Cucumber", 10, 2));
         products.add(new Product(3 ,"Potato", 7, 1));
@@ -26,6 +26,7 @@ public class Main {
                     service2.employeeMenu(products, input);
                     break;
                 case 3:
+                    System.out.println("You closed the App !");
                     return;
                 default:
                     System.out.println("Wrong choice !");
