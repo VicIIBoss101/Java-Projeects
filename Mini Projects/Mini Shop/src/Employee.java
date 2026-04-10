@@ -40,7 +40,7 @@ public class Employee {
         }
     }
 
-    static void showAllItems(ArrayList<Product> products, Scanner input) {
+    public static void showAllItems(ArrayList<Product> products, Scanner input) {
         while (true) {
             for (Product items : products) {
                 items.productInfo();
