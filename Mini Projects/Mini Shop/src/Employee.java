@@ -45,7 +45,6 @@ public class Employee {
         while (true) {
             for (Product items : products) {
                 items.productInfo();
-
             }
             System.out.print("Type y to return: ");
             char choice = input.nextLine().toLowerCase().charAt(0);
@@ -74,7 +73,6 @@ public class Employee {
                 case 4:
                     editing = false;
                     break;
-
                 default:
                     System.out.println("Wrong choice !!");
                     break;
@@ -112,7 +110,10 @@ public class Employee {
             int index = Main.getValidInt();
             input.nextLine();
             index -= 1;
-
+            if (products.size() < index) {
+                System.out.println("wrong index try again!");
+                continue;
+            }
             if (index > products.size()) {
                 System.out.println("sorry this item is not in the store! or you enterd a wrong number");
             } else {
@@ -129,8 +130,12 @@ public class Employee {
                 if (conform == 'y') {
                     products.remove(index);
                     System.out.println("The item has been removed! ");
+                    for (int i = 0; i < products.size(); i++) {
+                        products.get(i).updateNo((i + 1));
+                    }
                 }
             }
+
             System.out.print("Do you want to delete another item? y / n: ");
             char decide = input.nextLine().toLowerCase().charAt(0);
             if (decide == 'n') {
@@ -147,6 +152,10 @@ public class Employee {
             int index = Main.getValidInt();
             input.nextLine();
             index -= 1;
+            if (products.size() < index) {
+                System.out.println("wrong index try again!");
+                continue;
+            }
             System.out.print("1. edit item price " + "\n" + "2. edit item quantity : ");
             int choice = Main.getValidInt();
             input.nextLine();
@@ -155,13 +164,23 @@ public class Employee {
                     System.out.print("Enter the new price: ");
                     int newPrice = Main.getValidInt();
                     input.nextLine();
-
+                    products.get(index).updatePrice(newPrice);
                     break;
                 case 2:
+                    System.out.print("Enter the quantitiy: ");
+                    int newQuantity = Main.getValidInt();
+                    input.nextLine();
+                    products.get(index).editQuantity(newQuantity);
                     break;
                 default:
                     System.out.println("Wrong number!!");
                     break;
+            }
+            System.out.print("Edit another Item? Y / n :");
+            char decide = input.nextLine().toLowerCase().charAt(0);
+            if (decide == 'n') {
+                editing = false;
+                break;
             }
         }
     }

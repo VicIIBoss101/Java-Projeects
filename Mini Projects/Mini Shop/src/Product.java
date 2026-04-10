@@ -33,8 +33,16 @@ public class Product {
         quantity = this.quantity - amount;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public void updateNo(int newNo) {
         this.no = newNo;
+    }
+
+    public void editQuantity (int quant) {
+        this.quantity = quant;
     }
 
     public void updatePrice(int newPrice) {
