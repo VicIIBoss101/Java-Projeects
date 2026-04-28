@@ -1,6 +1,8 @@
 import java.util.Scanner;
+
 public class Main {
     static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) {
         System.out.print("Enter columns value for matrix A: ");
         int colA = input.nextInt();
@@ -19,6 +21,7 @@ public class Main {
         System.out.println("Now we will do operation on these matrices");
         operation(input, a, b);
     }
+
     static void fillArray(int[][] array, String name, Scanner input) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
@@ -27,6 +30,7 @@ public class Main {
             }
         }
     }
+
     static void printArray(int[][] array, String name) {
         System.out.println("==================================" + "\n" + name);
         for (int[] i : array) {
@@ -36,6 +40,7 @@ public class Main {
             System.out.println();
         }
     }
+
     static void operation(Scanner input, int[][] array1, int[][] array2) {
         while (true) {
             System.out.println("What type of operation do you want to do?");
@@ -66,44 +71,63 @@ public class Main {
                 return;
         }
     }
+
     static void additon(int[][] array1, int[][] array2) {
-        int[][] result = new int[array1.length][array1[0].length];
-        for (int i = 0; i < result.length; i++) {
-            for (int j = 0; j < result[i].length; j++) {
-                result[i][j] = array1[i][j] + array2[i][j];
-            }
-        }
-        printArray(result, "additon result");
-    }
-    static void subtraiton(int[][] array1, int[][] array2) {
-        int[][] result = new int[array1.length][array1[0].length];
-        for (int i = 0; i < result.length; i++) {
-            for (int j = 0; j < result[i].length; j++) {
-                result[i][j] = array1[i][j] - array2[i][j];
-            }
-        }
-        printArray(result, "subtraiton result");
-    }
-    static void division(int[][] array1, int[][] array2) {
-        int[][] result = new int[array1.length][array1[0].length];
-        for (int i = 0; i < result.length; i++) {
-            for (int j = 0; j < result[i].length; j++) {
-                if (array2[i][j] != 0) {
-                    result[i][j] = array1[i][j] / array2[i][j];
-                }
-            }
-        }
-        printArray(result, "division result");
-    }
-    static void multiplication(int[][] array1, int[][] array2) {
-        if (array1.length == array2[0].length) {
+        if (array1.length == array2.length && array1[0].length == array2[0].length) {
             int[][] result = new int[array1.length][array1[0].length];
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[i].length; j++) {
                     result[i][j] = array1[i][j] + array2[i][j];
                 }
             }
-            printArray(result, "multiplication result");
+            printArray(result, "additon result");
+        } else {
+            System.out.println("The n*m to array 1 must be equal to n*m of array 2!");
+        }
+    }
+
+    static void subtraiton(int[][] array1, int[][] array2) {
+        if (array1.length == array2.length && array1[0].length == array2[0].length) {
+            int[][] result = new int[array1.length][array1[0].length];
+            for (int i = 0; i < result.length; i++) {
+                for (int j = 0; j < result[i].length; j++) {
+                    result[i][j] = array1[i][j] - array2[i][j];
+                }
+            }
+            printArray(result, "subtraiton result");
+        } else {
+            System.out.println("The n*m to array 1 must be equal to n*m of array 2!");
+        }
+    }
+
+    static void division(int[][] array1, int[][] array2) {
+        if (array1.length == array2.length && array1[0].length == array2[0].length) {
+            int[][] result = new int[array1.length][array1[0].length];
+            for (int i = 0; i < result.length; i++) {
+                for (int j = 0; j < result[i].length; j++) {
+                    if (array2[i][j] != 0) {
+                        result[i][j] = array1[i][j] / array2[i][j];
+                    }
+                }
+            }
+            printArray(result, "division result");
+        } else {
+            System.out.println("The n*m to array 1 must be equal to n*m of array 2!");
+        }
+    }
+
+    static void multiplication(int[][] array1, int[][] array2) {
+        if (array1[0].length == array2.length) {
+            int[][] result = new int[array2.length][array1[0].length];
+            for ( int i = 0 ; i < result.length; i++){
+                for (int j = 0 ; j < result[i].length; j++){
+                    result[i][j]=0;
+                    for (int k = 0 ; k < result[i].length ; k++){
+                        result[i][j] += (array1[i][k] * array2[k][j]);
+                    }
+                }
+            }
+            printArray(result, "multiplication");
         } else {
             System.out.println("The rows must be equal to columns!");
         }
