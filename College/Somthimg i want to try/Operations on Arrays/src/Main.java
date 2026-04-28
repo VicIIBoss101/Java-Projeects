@@ -118,11 +118,11 @@ public class Main {
 
     static void multiplication(int[][] array1, int[][] array2) {
         if (array1[0].length == array2.length) {
-            int[][] result = new int[array2.length][array1[0].length];
-            for ( int i = 0 ; i < result.length; i++){
-                for (int j = 0 ; j < result[i].length; j++){
-                    result[i][j]=0;
-                    for (int k = 0 ; k < result[i].length ; k++){
+            int[][] result = new int[array1.length][array2[0].length];
+            for (int i = 0; i < result.length; i++) {
+                for (int j = 0; j < result[i].length; j++) {
+                    result[i][j] = 0;
+                    for (int k = 0 ; k < result[i].length;k++){
                         result[i][j] += (array1[i][k] * array2[k][j]);
                     }
                 }
