@@ -122,7 +122,7 @@ public class Main {
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[i].length; j++) {
                     result[i][j] = 0;
-                    for (int k = 0 ; k < result[i].length;k++){
+                    for (int k = 0 ; k < array1[0].length;k++){
                         result[i][j] += (array1[i][k] * array2[k][j]);
                     }
                 }
