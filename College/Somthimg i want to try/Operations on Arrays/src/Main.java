@@ -4,14 +4,14 @@ public class Main {
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.print("Enter columns value for matrix A: ");
-        int colA = input.nextInt();
         System.out.print("Enter rows value for matrix A: ");
         int rowA = input.nextInt();
-        System.out.print("Enter columns value for matrix B: ");
-        int colB = input.nextInt();
+        System.out.print("Enter columns value for matrix A: ");
+        int colA = input.nextInt();
         System.out.print("Enter rows value for matrix B: ");
         int rowB = input.nextInt();
+        System.out.print("Enter columns value for matrix B: ");
+        int colB = input.nextInt();
         int[][] a = new int[rowA][colA];
         fillArray(a, "A", input);
         int[][] b = new int[rowB][colB];
@@ -122,7 +122,7 @@ public class Main {
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[i].length; j++) {
                     result[i][j] = 0;
-                    for (int k = 0 ; k < array1[0].length;k++){
+                    for (int k = 0; k < array1[0].length; k++) {
                         result[i][j] += (array1[i][k] * array2[k][j]);
                     }
                 }

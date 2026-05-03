@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Employee {
-    static String employeePass = "0001";
+    static String employeePass = "0011";
 
     public void employeeMenu(ArrayList<Product> products, Scanner input) {
         boolean access = false;
