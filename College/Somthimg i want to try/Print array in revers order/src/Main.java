@@ -23,8 +23,8 @@ public class Main {
 
     static int[] reverOrder(int[] arr) {
         int[] result = new int[arr.length];
-        for (int i = (arr.length - 1); i >= 0; i--) {
-            result[(result.length - 1) - i] = arr[i];
+        for (int i = 0; i < arr.length ; i++) {
+            result[i] = arr[(arr.length - 1) - i];
         }
         return result;
     }

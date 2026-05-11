@@ -1,8 +1,8 @@
-import java.uti.Scanner;
+import java.util.Scanner;
 public class Summation {
     
+    static Scanner input = new Scanner (System.in);
     public static void main(String[] args)  {
-        static Scanner input = new Scanner (System.in);
         System.out.print("Enter a value for N : ");
         int n = input.nextInt();
         System.out.print("Enter a value for x: ");

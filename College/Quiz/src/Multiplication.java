@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Multiplication {
+    static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
         System.out.print("Enter a value for N : ");
         int n = input.nextInt();
         System.out.print("Enter a value for X: ");

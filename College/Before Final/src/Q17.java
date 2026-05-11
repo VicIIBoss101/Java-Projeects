@@ -10,13 +10,13 @@ public class Q17 {
             System.out.print("Enter number: ");
             int num = input.nextInt();
             sum += num;
+            count++;
             if (num >= 0) posNum++;
             if (num < 0) ngeNum++;
             System.out.print("Enter 1 to exit and 2 to continue");
             int choice = input.nextInt();
             if (choice == 1)
                 break;
-            count++;
         }
         avg = (sum * 1.0) / (count * 1.0);
         System.out.println(
