@@ -1,9 +1,0 @@
-{
-    "java.project.sourcePaths": ["src"],
-    "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar"
-    ],
-    "workbench.colorTheme": "Dobri Next -A02- Bunker",
-    "editor.mouseWheelZoom": true
-}
