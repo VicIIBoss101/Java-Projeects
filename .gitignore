@@ -1,8 +1,11 @@
-
+.vscode/
+resources/
+test/
+target/
+lib/
 bin/
 out/
 *.class
 .settings/
 .classpath
 .project
-
