@@ -5,22 +5,38 @@ public class MenuOptions {
 
     String[] mainMenu = { "1. View All Pationts", "2. Check Pationts Status", "3. Add new Pationt", "3. Exit" };
 
-    public void viewAllPationts(ArrayList<Pationt> pationtsL) {
-        if (pationtsL.isEmpty()) {
+    public void viewAllPationts(ArrayList<Patient> patientsL) {
+        if (patientsL.isEmpty()) {
             System.out.println("there is no paitont in the system!!");
         } else {
-            System.out.printf("%-2s|%-12s|%-5s|%-5s|%-5s \n", "ID", "\tFull Name", "Status", "Room Num", "days Spent");
-            for (Pationt p : pationtsL) {
-                System.out.printf("%-2d|%-16s| %-5s|   %-5d|   %-5d\n", p.getPationtId(), p.getPationtName(), p.getPationtStatus(), p.getPationtRoom(), p.getDaysSpent());
+            printInfoMenu();
+            for (Patient p : patientsL) {
+                printPatientInfo(p);
             }
         }
-
     }
 
-    public void checkPationtStatus(ArrayList<Pationt> pationtsL, Scanner input) {
+    public void checkPatientStatus(ArrayList<Patient> patientL, Scanner input) {
+        System.out.print("Enter the patient ID: ");
+        int pID = input.nextInt();
+        input.nextLine();
+        Patient s = null;
+        for (Patient patient : patientL) {
+            if (patient.getPationtId() == pID) {
+                s = patient;
+                break;
+            } else
+                System.out.println("The patien is not found!");
+        }
+        if (s != null) {
+            printInfoMenu();
+            printPatientInfo(s);
+            System.out.println("press enter to continue");
+            input.nextLine();
+        }
     }
 
-    public void addPationt(ArrayList<Pationt> pationtsL, Scanner input) {
+    public void addPationt(ArrayList<Patient> patientsL, Scanner input) {
         do {
             System.out.print("Enter Pationt Full Name: ");
             String name = input.nextLine();
@@ -30,41 +46,36 @@ public class MenuOptions {
             int room = input.nextInt();
             System.out.print("Enter paitont daysSpent: ");
             int spentDays = input.nextInt();
-            int iD = pationtsL.size() + 1;
-            pationtsL.add(new Pationt(iD, name, status, room, spentDays));
+            int iD = patientsL.size() + 1;
+            patientsL.add(new Patient(iD, name, status, room, spentDays));
             System.out.print("Do you want to add another Pationt?\nYes/No: ");
             input.nextLine();
         } while ((input.nextLine().equalsIgnoreCase("yes")));
     }
 
-    public static void printCustomMenu(String title, String[] options) {
+    // ======================== Print methodes ========================
+    private static void printCustomMenu(String title, String[] options) {
         System.out.println("\n" + title);
         System.out.println("=".repeat(title.length()));
         for (String option : options) {
             System.out.println(option);
         }
-
         System.out.println("=".repeat(title.length()));
     }
 
+    private void printPatientInfo(Patient p) {
+        System.out.printf("%-2d|%-20s|%-7s| %-7d|   %-7d|%-7s\n", p.getPationtId(), p.getPationtName(),
+                p.getPationtStatus(), p.getPationtRoom(), p.getDaysSpent(), p.getFRegTime());
+    }
+
+    private void printInfoMenu() {
+        System.out.printf("%-2s|%-16s|%-7s|%-7s|%-7s|%-7s \n", "ID", "\tFull Name", "Status", "Room Num",
+                "days Spent", "registration Time");
+    }
+
+    // ================================================
     public void showMainMenu() {
         printCustomMenu("Hospital System", mainMenu);
     }
 
-    public void excution(int choice, ArrayList<Pationt> pationtsL, Scanner input) {
-        switch (choice) {
-            case 1:
-                viewAllPationts(pationtsL);
-                break;
-            case 3:
-                addPationt(pationtsL, input);
-                break;
-            case 4:
-                System.out.print("press 4 again to conform: ");
-                return;
-            default:
-                System.out.println("Wrong choice!!");
-                break;
-        }
-    }
 }
