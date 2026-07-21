@@ -3,8 +3,15 @@ import java.util.Scanner;
 
 public class MenuOptions {
 
-    String[] mainMenu = { "1. View All Pationts", "2. Check Pationts Status", "3. Add new Pationt", "3. Exit" };
+    private String[] mainMenu = { "Select Programm mode:", "1. Manager", "2. Employee", "3. Customer",
+            "4. exit Programm" };
+    private String[] employeeMenu = { "1. Check Available Rooms", "2. check Patient Status", "3. Edit Patient Details",
+            "4. exit" };
+    private String[] managerMenu = { " " };
+    private String[] custromerMenu = { "1. registration Menu", "2. Check out", "3. return to main menu" };
+    private String[] registationMenu = { "1. Vip room (540$ pre night)", "2. Regular room (60$ per night)" };
 
+    // ======================== . ========================
     public void viewAllPationts(ArrayList<Patient> patientsL) {
         if (patientsL.isEmpty()) {
             System.out.println("there is no paitont in the system!!");
@@ -73,9 +80,23 @@ public class MenuOptions {
                 "days Spent", "registration Time");
     }
 
-    // ================================================
+    // ======================== Menus Methods ========================
     public void showMainMenu() {
         printCustomMenu("Hospital System", mainMenu);
     }
 
+    public void showEmployeeMenu() {
+        printCustomMenu("Employee Menu", employeeMenu);
+    }
+
+    public void showManagerMenu() {
+        printCustomMenu("Manager Menu", managerMenu);
+    }
+
+    public void showCustomerMenu() {
+        printCustomMenu("Customer Menu", custromerMenu);
+    }
+    public void showRigstrationMenu(){
+        printCustomMenu("Registation Menu", registationMenu);
+    }
 }

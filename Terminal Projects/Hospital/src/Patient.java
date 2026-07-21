@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 public class Patient {
-    private int patienId, daysSpent, patientRoom;
+    private int patienId, daysSpent, patientRoom,roomType, nightReg;
     private String patientName, patientStatus;
     private LocalDateTime regTime;
 
