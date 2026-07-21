@@ -39,13 +39,13 @@ public class Customer {
         input.nextLine();
         switch (choice) {
             case 1:
-                Patient vPatient = null;
-                regVipRoom(vPatient, input, vipRoom);
+                Patient vPatient = new Patient();
+                regVipRoom( input, vipRoom);
                 patientL.add(vPatient);
                 break;
             case 2:
-                Patient rPatient = null;
-                regRegularRoom(rPatient, input, regularRoom);
+                Patient rPatient = new Patient();
+                regRegularRoom( input, regularRoom,patientL);
                 patientL.add(rPatient);
                 break;
             case 3:
@@ -60,7 +60,7 @@ public class Customer {
     }
     // ======================== Registraions methods ========================
 
-    private void regVipRoom(Patient newp, Scanner input, ArrayList<Integer> vipRoom) {
+    private void regVipRoom( Scanner input, ArrayList<Integer> vipRoom) {
         if (vipRoom.isEmpty()) {
             System.out.println("there is no rooms Available!!");
         } else {
@@ -81,7 +81,7 @@ public class Customer {
         }
     }
 
-    private void regRegularRoom(Patient newp, Scanner input, ArrayList<Integer> regularRoom) {
+    private void regRegularRoom( Scanner input, ArrayList<Integer> regularRoom, ArrayList<Patient> patientL) {
         if (regularRoom.isEmpty()) {
             System.out.println("there is no rooms Available!!");
         } else {
@@ -93,7 +93,7 @@ public class Customer {
                 if (nightR > 10 || nightR <= 0)
                     System.out.print("invalid number enterd!!\nTry again:");
                 else {
-                    newp.setRoomAndNights("VIP", nightR);
+                    regPatient(input, patientL,"Regular" ,nightR);
                     System.out.println("Room Registation done!");
                     regularRoom.removeFirst();
                     break;
@@ -102,10 +102,14 @@ public class Customer {
         }
     }
 
-    private void regPatient(Scanner input, ArrayList<Patient> patientL){
+    private void regPatient(Scanner input, ArrayList<Patient> patientL,String roomType,int night){
         System.out.print("Enter your full name: ");
         String name = input.nextLine();
+        int id = (patientL.size()) +  1;
         
+
+
+
     }
 
     // ======================== checkout method ========================

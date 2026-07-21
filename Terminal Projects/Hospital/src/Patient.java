@@ -6,7 +6,7 @@ public class Patient {
     private String patientName, patientStatus, roomType;
     private LocalDateTime regTime;
 
-    // ======================== ========================
+    // ======================== Obj cons (Overloaded) ========================
     public Patient(int patienId, String patientName, String paitentStatus, int patientRoom, int daysSpent) {
         this.patienId = patienId;
         this.patientName = patientName;
@@ -16,10 +16,15 @@ public class Patient {
         this.regTime = LocalDateTime.now();
     }
 
-    public Patient(int patientId, String patientName) {
+    public Patient(int patientId, String patientName, String roomType, int night) {
         this.patientName = patientName;
         this.patienId = patientId;
+        this.roomType = roomType;
+        this.nightReg = night;
         this.regTime = LocalDateTime.now();
+    }
+
+    public Patient() {
     }
 
     // ======================== Stters ========================
@@ -37,6 +42,7 @@ public class Patient {
     }
 
     public void setID(int id) {
+
         this.patienId = id;
     }
 
