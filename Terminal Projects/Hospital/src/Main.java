@@ -4,6 +4,10 @@ import java.util.ArrayList;;
 public class Main {
     public static void main(String[] args) throws Exception {
         ArrayList<Patient> patientsInof = new ArrayList<>();
+        ArrayList<Integer> vipRoom = new ArrayList<>();
+        availableRoom(vipRoom);
+        ArrayList<Integer> regularRoom = new ArrayList<>();
+        availableRoom(regularRoom);
         patientsInof.add(new Patient(1, "ali sami haliem", "good", 5, 2));
         MenuOptions menus = new MenuOptions();
         try (Scanner input = new Scanner(System.in)) {
@@ -18,7 +22,8 @@ public class Main {
                         menus.viewAllPationts(patientsInof);
                         break;
                     case 2:
-                        menus.checkPatientStatus(patientsInof, input);
+                        Customer cMenu = new Customer();
+                        cMenu.customerService(input, vipRoom, regularRoom, patientsInof);
                         break;
                     case 3:
                         menus.addPationt(patientsInof, input);
@@ -31,6 +36,12 @@ public class Main {
                         break;
                 }
             }
+        }
+    }
+
+    private static void availableRoom(ArrayList<Integer> romsType) {
+        for (int i = 1; i <= 10; i++) {
+            romsType.add(i);
         }
     }
 }

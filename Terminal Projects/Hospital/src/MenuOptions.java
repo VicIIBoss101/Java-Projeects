@@ -9,7 +9,7 @@ public class MenuOptions {
             "4. exit" };
     private String[] managerMenu = { " " };
     private String[] custromerMenu = { "1. registration Menu", "2. Check out", "3. return to main menu" };
-    private String[] registationMenu = { "1. Vip room (540$ pre night)", "2. Regular room (60$ per night)" };
+    private String[] registationMenu = { "1. Vip room (540$ pre night)", "2. Regular room (60$ per night)", "3. back" };
 
     // ======================== . ========================
     public void viewAllPationts(ArrayList<Patient> patientsL) {
