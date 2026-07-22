@@ -61,7 +61,7 @@ public class MenuOptions {
     }
 
     // ======================== Print methodes ========================
-    private static void printCustomMenu(String title, String[] options) {
+    protected  void printCustomMenu(String title, String[] options) {
         System.out.println("\n" + title);
         System.out.println("=".repeat(title.length()));
         for (String option : options) {
@@ -71,12 +71,12 @@ public class MenuOptions {
     }
 
     private void printPatientInfo(Patient p) {
-        System.out.printf("%-2d|%-20s|%-7s| %-7d|   %-7d|%-7s\n", p.getPationtId(), p.getPationtName(),
-                p.getPationtStatus(), p.getPationtRoom(), p.getDaysSpent(), p.getFRegTime());
+        System.out.printf("%-2d|%-20s|%-7.7s| %-7d|   %-7d|%-7s\n", p.getPationtId(), p.getPationtName(),
+                p.getRoomtype(), p.getPationtRoom(), p.getDaysSpent(), p.getFRegTime());
     }
 
     private void printInfoMenu() {
-        System.out.printf("%-2s|%-16s|%-7s|%-7s|%-7s|%-7s \n", "ID", "\tFull Name", "Status", "Room Num",
+        System.out.printf("%-2s|%-16s|%-7s|%-7s|%-7s|%-7s \n", "ID", "\tFull Name", "Room Type", "Room Num",
                 "days Spent", "registration Time");
     }
 

@@ -8,7 +8,7 @@ public class Main {
         availableRoom(vipRoom);
         ArrayList<Integer> regularRoom = new ArrayList<>();
         availableRoom(regularRoom);
-        patientsInof.add(new Patient(1, "ali sami haliem", "good", 5, 2));
+        patientsInof.add(new Patient(1, "ali sami haliem", "Vip", 5, 2));
         MenuOptions menus = new MenuOptions();
         try (Scanner input = new Scanner(System.in)) {
 
