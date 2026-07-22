@@ -71,7 +71,7 @@ public class MenuOptions {
     }
 
     private void printPatientInfo(Patient p) {
-        System.out.printf("%-2d|%-20s|%-7.7s| %-7d|   %-7d|%-7s\n", p.getPationtId(), p.getPationtName(),
+        System.out.printf("%-2d|%-20s|  %-7.7s| %-7d|   %-7d|%-7s\n", p.getPationtId(), p.getPationtName(),
                 p.getRoomtype(), p.getPationtRoom(), p.getDaysSpent(), p.getFRegTime());
     }
 

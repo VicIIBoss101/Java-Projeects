@@ -27,8 +27,9 @@ public class Customer {
                     checkout(input, patientL);
                     break;
                 case 3:
-                    exitMode(input);
-                    serviceRunnig = false;
+                    if (exitMode(input)) {
+                        serviceRunnig = false;
+                    }
                     break;
                 default:
                     System.out.println("Wrong number enterd!!");
@@ -124,16 +125,19 @@ public class Customer {
             Patient s = null;
             System.out.print("1. Search by ID\n2. Search by Room number\nEnter your choice: ");
             int choice = input.nextInt();
+            input.nextLine();
             while (checkingOut) {
                 switch (choice) {
                     case 1:
                         System.out.print("Enter your ID: ");
                         int id = input.nextInt();
+                        input.nextLine();
                         s = searchbyID(patientL, id);
                         break;
                     case 2:
                         System.out.print("Enter your Room Number: ");
                         int room = input.nextInt();
+                        input.nextLine();
                         s = searchbyRoom(patientL, room);
 
                     default:
@@ -142,13 +146,12 @@ public class Customer {
                 }
                 if (s == null) {
                     System.out.println("Sorry somthing wrong with finding your registration!!");
-                    checkingOut = false;
                     break;
                 } else {
-                    // ======================== charge out ========================
+                    // ======================== charge section ========================
                     double totalAmount = 0;
                     int nights = nightSpent(s);
-                    if (nights == 0){
+                    if (nights == 0) {
                         nights = 1;
                     }
                     if (s.getRoomtype().equalsIgnoreCase("vip"))
@@ -187,11 +190,10 @@ public class Customer {
         for (Patient tar : patientL) {
             if (id == tar.getPationtId()) {
                 return target = tar;
-            } else {
-                System.out.println("You enterd wrong number or your ID does'n exist!!");
-                return null;
             }
         }
+        if (target == null)
+            System.out.println("You enterd wrong number or the Id does'n exist!!");
         return target;
     }
 
@@ -200,26 +202,25 @@ public class Customer {
         for (Patient tar : patientL) {
             if (room == tar.getPationtRoom()) {
                 return target = tar;
-            } else {
-                System.out.println("You enterd wrong number or the room does'n exist!!");
-                return null;
             }
         }
+        if (target == null)
+            System.out.println("You enterd wrong number or the room does'n exist!!");
         return target;
     }
 
     // ======================== exit mode ========================
-    private void exitMode(Scanner input) {
+    private boolean exitMode(Scanner input) {
         while (true) {
-            System.out.print("Enter conformation password: ");
-            int enterdCode = input.nextInt();
+            System.out.print("Enter confirmation password: ");
+            int enteredCode = input.nextInt();
             input.nextLine();
-            if (enterdCode == servicePassword)
-                return;
-            else {
-                System.out.println("wrong password!\nPress Enter");
+            if (enteredCode == servicePassword) {
+                return true;
+            } else {
+                System.out.println("Wrong password!\nPress Enter");
                 input.nextLine();
-                break;
+                return false;
             }
         }
     }
