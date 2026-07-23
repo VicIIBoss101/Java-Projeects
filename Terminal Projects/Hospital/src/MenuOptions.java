@@ -8,7 +8,7 @@ public class MenuOptions {
     private String[] employeeMenu = { "1. Check Available Rooms", "2. check Patient Status", "3. Edit Patient Details",
             "4. exit" };
     private String[] managerMenu = { " " };
-    private String[] custromerMenu = { "1. registration Menu", "2. Check out", "3. return to main menu" };
+    private String[] custromerMenu = { "1. registration Menu", "2. Check out","3. Cancel registration" ,"4. return to main menu" };
     private String[] registationMenu = { "1. Vip room (540$ pre night)", "2. Regular room (60$ per night)", "3. back" };
 
     // ======================== . ========================
@@ -54,7 +54,7 @@ public class MenuOptions {
             System.out.print("Enter paitont daysSpent: ");
             int spentDays = input.nextInt();
             int iD = patientsL.size() + 1;
-            patientsL.add(new Patient(iD, name, status, room, spentDays));
+            patientsL.add(new Patient( name, status, room, spentDays));
             System.out.print("Do you want to add another Pationt?\nYes/No: ");
             input.nextLine();
         } while ((input.nextLine().equalsIgnoreCase("yes")));

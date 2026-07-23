@@ -2,6 +2,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Patient {
+    static private int idCount = 0;
     private int patienId, daysSpent, patientRoom, nightReg;
     private String patientName, patientStatus, roomType;
     private LocalDateTime regTime;
@@ -16,9 +17,9 @@ public class Patient {
     //     this.regTime = LocalDateTime.now();
     // }
 
-    public Patient(int patientId, String patientName, String roomType, int roomNum, int night) {
+    public Patient( String patientName, String roomType, int roomNum, int night) {
         this.patientName = patientName;
-        this.patienId = patientId;
+        this.patienId = setID();
         this.roomType = roomType;
         this.nightReg = night;
         this.patientRoom = roomNum;
@@ -40,9 +41,10 @@ public class Patient {
             this.patientName = name;
     }
 
-    public void setID(int id) {
-
-        this.patienId = id;
+    public int setID() {
+        int sID = this.idCount + 1;
+        this.idCount ++;
+        return sID;
     }
 
     // ======================== Getters ========================

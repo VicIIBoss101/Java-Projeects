@@ -8,14 +8,17 @@ public class Main {
         availableRoom(vipRoom);
         ArrayList<Integer> regularRoom = new ArrayList<>();
         availableRoom(regularRoom);
-        patientsInof.add(new Patient(1, "ali sami haliem", "Vip", 5, 2));
+        // int id = patientsInof.getLast().setID();
+        patientsInof.add(new Patient("ali sami haliem", "Vip", 5, 2));
+        patientsInof.add(new Patient("haliem", "Vip", 2, 2));
+        patientsInof.add(new Patient("sami haliem", "Vip", 3, 2));
         MenuOptions menus = new MenuOptions();
         try (Scanner input = new Scanner(System.in)) {
 
             while (true) {
                 menus.showMainMenu();
                 System.out.print("Enter your choice: ");
-                int choice = input.nextInt();
+                int choice = getValiadInt(input);
                 input.nextLine();
                 switch (choice) {
                     case 1:
@@ -32,7 +35,8 @@ public class Main {
                         return;
 
                     default:
-                        System.out.println("Wrong chocie number entered!!");
+                        System.out.println("Wrong chocie number entered!!\nPress enter to continue");
+                        input.nextLine();
                         break;
                 }
             }
@@ -42,6 +46,17 @@ public class Main {
     private static void availableRoom(ArrayList<Integer> romsType) {
         for (int i = 1; i <= 10; i++) {
             romsType.add(i);
+        }
+    }
+
+    public static int getValiadInt(Scanner input) {
+        while (true) {
+            try {
+                return input.nextInt();
+            } catch (Exception e) {
+                System.out.print("-".repeat(10) + "\n" + "Please Enter just numbers: ");
+                input.nextLine();
+            }
         }
     }
 }
