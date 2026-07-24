@@ -25,10 +25,10 @@ public class Customer {
                     excuteRegiMenu(input, vipRoom, regularRoom, patientL);
                     break;
                 case 2:
-                    checkout(input, patientL,vipRoom,regularRoom);
+                    checkout(input, patientL, vipRoom, regularRoom);
                     break;
                 case 3:
-                    cancelReg(input, patientL,vipRoom,regularRoom);
+                    cancelReg(input, patientL, vipRoom, regularRoom);
                     break;
                 case 4:
                     if (exitMode(input)) {
@@ -42,7 +42,7 @@ public class Customer {
         }
     }
 
-    private void excuteRegiMenu(Scanner input, ArrayList<Integer> vipRoom,
+    protected void excuteRegiMenu(Scanner input, ArrayList<Integer> vipRoom,
             ArrayList<Integer> regularRoom, ArrayList<Patient> patientL) {
         menu.showRigstrationMenu();
         System.out.print("Enter your choice: ");
@@ -50,10 +50,12 @@ public class Customer {
         input.nextLine();
         switch (choice) {
             case 1:
-                regVipRoom(input, vipRoom, patientL);
+                // vip
+                regRoom(input, vipRoom, patientL, "vip");
                 break;
             case 2:
-                regRegularRoom(input, regularRoom, patientL);
+                // regular
+                regRoom(input, regularRoom, patientL, "regular");
                 break;
             case 3:
                 System.out.print("press enter to continue: ");
@@ -65,123 +67,7 @@ public class Customer {
         }
 
     }
-    // ======================== Registraions methods ========================
 
-    private void regVipRoom(Scanner input, ArrayList<Integer> vipRoom, ArrayList<Patient> patientL) {
-        if (vipRoom.isEmpty()) {
-            System.out.println("there is no rooms Available!!");
-        } else {
-            System.out.print("How many night you will stay: ");
-            int nightR;
-            while (true) {
-                nightR = Main.getValiadInt(input);
-                input.nextLine();
-                if (nightR > 10 || nightR <= 0)
-                    System.out.print("invalid number enterd!!\nTry again:");
-                else {
-                    regPatient(input, patientL, "Vip", nightR, vipRoom.getFirst());
-                    System.out.println("Room Registation done!" + "\n" + "you ID is: "
-                            + patientL.getLast().getPationtId() + "\nYour room number is: " + vipRoom.getFirst()
-                            + "\nPress enter to continue");
-                    input.nextLine();
-                    vipRoom.removeFirst();
-                    break;
-                }
-            }
-        }
-    }
-
-    private void regRegularRoom(Scanner input, ArrayList<Integer> regularRoom, ArrayList<Patient> patientL) {
-        if (regularRoom.isEmpty()) {
-            System.out.println("there is no rooms Available!!");
-        } else {
-            System.out.print("How many night you will stay: ");
-            int nightR;
-            while (true) {
-                nightR = Main.getValiadInt(input);
-                input.nextLine();
-                if (nightR > 10 || nightR <= 0)
-                    System.out.print("invalid number enterd!!\nTry again:");
-                else {
-                    regPatient(input, patientL, "Regular", nightR, regularRoom.getFirst());
-                    System.out.println("Room Registation done!" + "\n" + "you ID is: "
-                            + patientL.getLast().getPationtId() + "\nYour room number is: " + regularRoom.getFirst()
-                            + "\nPress enter to continue");
-                    input.nextLine();
-                    regularRoom.removeFirst();
-                    break;
-                }
-            }
-        }
-    }
-
-    private void regPatient(Scanner input, ArrayList<Patient> patientL, String roomType, int night, int roomNum) {
-        System.out.print("Enter your full name: ");
-        String name = input.nextLine();
-        patientL.add(new Patient(name, roomType, roomNum, night));
-    }
-
-    // ======================== . ========================
-
-    private void cancelReg(Scanner input, ArrayList<Patient> patientL, ArrayList<Integer> vipRoom,
-            ArrayList<Integer> regularRoom) {
-        Patient tar = null;
-        while (tar == null) {
-            System.out.print("-".repeat(10) + "\n1. searchbyID\n2. searchbyRoom\n3. back\nEnter Your chocie: ");
-            int chocie = Main.getValiadInt(input);
-            switch (chocie) {
-                case 1:
-                    System.out.print("Enter Your ID: ");
-                    int id = Main.getValiadInt(input);
-                    tar = searchbyID(patientL, id);
-                    break;
-                case 2:
-                    System.out.print("Enter your room nubmer: ");
-                    int rommNum = Main.getValiadInt(input);
-                    tar = searchbyRoom(patientL, rommNum);
-                    break;
-                case 3:
-                    System.out.println("Press enter to continue: ");
-                    return;
-
-                default:
-                    System.out.println("wrong number enterd!!");
-                    input.nextLine();
-                    break;
-            }
-            if (tar == null) {
-                System.out.print("There was issues with finding yoru registration!\n"
-                        + "Want to try again (Enter 1) or go back (Enter 2): ");
-                int choice = Main.getValiadInt(input);
-                if (chocie == 1)
-                    continue;
-                else if (choice == 2)
-                    return;
-
-            } else {
-                break;
-            }
-        }
-        if (tar != null) {
-            if (deleteObj(tar, patientL, vipRoom,regularRoom) == null) {
-                System.out.println("done!!\n");
-                input.nextLine();
-            }
-        }
-    }
-
-    private Patient deleteObj(Patient p, ArrayList<Patient> patientL, ArrayList<Integer> vipRoom,
-            ArrayList<Integer> regularRoom) {
-        if (p.getRoomtype().equalsIgnoreCase("vip")) {
-            vipRoom.addLast(p.getPationtRoom());
-        } else if (p.getRoomtype().equalsIgnoreCase("regular")) {
-            regularRoom.addLast(p.getPationtRoom());
-        }
-        patientL.remove(p);
-        return null;
-    }
-
-    // ======================== checkout method ========================
     private void checkout(Scanner input, ArrayList<Patient> patientL, ArrayList<Integer> vipRoom,
             ArrayList<Integer> regularRoom) {
         boolean checkingOut = true;
@@ -238,6 +124,103 @@ public class Customer {
         }
     }
 
+    protected void cancelReg(Scanner input, ArrayList<Patient> patientL, ArrayList<Integer> vipRoom,
+            ArrayList<Integer> regularRoom) {
+        Patient tar = null;
+        while (tar == null) {
+            System.out.print("-".repeat(10) + "\n1. searchbyID\n2. searchbyRoom\n3. back\nEnter Your chocie: ");
+            int chocie = Main.getValiadInt(input);
+            input.nextLine();
+            switch (chocie) {
+                case 1:
+                    System.out.print("Enter Your ID: ");
+                    int id = Main.getValiadInt(input);
+                    input.nextLine();
+                    tar = searchbyID(patientL, id);
+                    break;
+                case 2:
+                    System.out.print("Enter your room nubmer: ");
+                    int rommNum = Main.getValiadInt(input);
+                    input.nextLine();
+                    tar = searchbyRoom(patientL, rommNum);
+                    break;
+                case 3:
+                    System.out.println("Press enter to continue: ");
+                    return;
+
+                default:
+                    System.out.println("wrong number enterd!!");
+                    input.nextLine();
+                    break;
+            }
+            if (tar == null) {
+                System.out.print("There was issues with finding yoru registration!\n"
+                        + "Want to try again (Enter 1) or go back (Enter 2): ");
+                int choice = Main.getValiadInt(input);
+                input.nextLine();
+                if (chocie == 1)
+                    continue;
+                else if (choice == 2)
+                    return;
+
+            } else {
+                break;
+            }
+        }
+        if (tar != null) {
+            if (deleteObj(tar, patientL, vipRoom, regularRoom) == null) {
+                System.out.println("done!!\n");
+                input.nextLine();
+            }
+        }
+    }
+    // ======================== Registraions methods ========================
+
+    private void regRoom(Scanner input, ArrayList<Integer> roomTypeList, ArrayList<Patient> patientL, String roomType) {
+        if (roomTypeList.isEmpty()) {
+            System.out.println("there is no rooms Available!!");
+        } else {
+            System.out.print("How many night you will stay: ");
+            int nightR;
+            while (true) {
+                nightR = Main.getValiadInt(input);
+                input.nextLine();
+                if (nightR > 10 || nightR <= 0)
+                    System.out.print("invalid number enterd!!\nTry again:");
+                else {
+                    regPatient(input, patientL, roomType, nightR, roomTypeList.getFirst());
+                    System.out.println("Room Registation done!" + "\n" + "you ID is: "
+                            + patientL.getLast().getPationtId() + "\nYour room number is: " + roomTypeList.getFirst()
+                            + "\nPress enter to continue");
+                    input.nextLine();
+                    roomTypeList.removeFirst();
+                    break;
+                }
+            }
+        }
+    }
+
+    private void regPatient(Scanner input, ArrayList<Patient> patientL, String roomType, int night, int roomNum) {
+        System.out.print("Enter your full name: ");
+        String name = input.nextLine();
+        patientL.add(new Patient(name, roomType, roomNum, night));
+    }
+
+    // ======================== cancel registration method ========================
+
+    private Patient deleteObj(Patient p, ArrayList<Patient> patientL, ArrayList<Integer> vipRoom,
+            ArrayList<Integer> regularRoom) {
+        if (p.getRoomtype().equalsIgnoreCase("vip")) {
+            vipRoom.addLast(p.getPationtRoom());
+        } else if (p.getRoomtype().equalsIgnoreCase("regular")) {
+            regularRoom.addLast(p.getPationtRoom());
+        }
+        patientL.remove(p);
+        return null;
+    }
+
+    // ======================== checkout method ========================
+
     private int nightSpent(Patient s) {
         int totalNight = 0;
         LocalDateTime nowDateTime = LocalDateTime.now();
@@ -249,7 +232,7 @@ public class Customer {
         return totalNight;
     }
 
-    private Patient searchbyID(ArrayList<Patient> patientL, int id) {
+    protected Patient searchbyID(ArrayList<Patient> patientL, int id) {
         Patient target = null;
         for (Patient tar : patientL) {
             if (id == tar.getPationtId()) {
@@ -261,7 +244,7 @@ public class Customer {
         return target;
     }
 
-    private Patient searchbyRoom(ArrayList<Patient> patientL, int room) {
+    protected Patient searchbyRoom(ArrayList<Patient> patientL, int room) {
         Patient target = null;
         for (Patient tar : patientL) {
             if (room == tar.getPationtRoom()) {

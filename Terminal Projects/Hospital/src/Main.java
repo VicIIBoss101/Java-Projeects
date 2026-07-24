@@ -8,10 +8,6 @@ public class Main {
         availableRoom(vipRoom);
         ArrayList<Integer> regularRoom = new ArrayList<>();
         availableRoom(regularRoom);
-        // int id = patientsInof.getLast().setID();
-        patientsInof.add(new Patient("ali sami haliem", "Vip", 5, 2));
-        patientsInof.add(new Patient("haliem", "Vip", 2, 2));
-        patientsInof.add(new Patient("sami haliem", "Vip", 3, 2));
         MenuOptions menus = new MenuOptions();
         try (Scanner input = new Scanner(System.in)) {
 
@@ -22,18 +18,15 @@ public class Main {
                 input.nextLine();
                 switch (choice) {
                     case 1:
-                        menus.viewAllPationts(patientsInof);
+                        Employee emp = new Employee();
+                        emp.employeeService(patientsInof, input, vipRoom, regularRoom);
                         break;
                     case 2:
                         Customer cMenu = new Customer();
                         cMenu.customerService(input, vipRoom, regularRoom, patientsInof);
                         break;
                     case 3:
-                        menus.addPationt(patientsInof, input);
-                        break;
-                    case 4:
                         return;
-
                     default:
                         System.out.println("Wrong chocie number entered!!\nPress enter to continue");
                         input.nextLine();
