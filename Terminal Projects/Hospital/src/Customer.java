@@ -1,20 +1,20 @@
 import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 
 public class Customer {
     private HospitalManage manage;
+    private MenuOptions menu;
+    private HospitalServices services;
     private Scanner input;
     private boolean serviceRunnig = true;
     private final int servicePassword = 2020;
     private static final double regularRPrice = 60.0;
     private static final double vipRPrice = 540.0;
-    private MenuOptions menu = new MenuOptions();
 
-    public Customer(HospitalManage hospitalM, Scanner input) {
+    public Customer(HospitalManage hospitalM, MenuOptions menuObj, HospitalServices services, Scanner input) {
         this.manage = hospitalM;
         this.input = input;
+        this.menu = menuObj;
+        this.services = services;
     }
 
     public void customerService() {
@@ -26,13 +26,13 @@ public class Customer {
             input.nextLine();
             switch (chocie) {
                 case 1:
-                    excuteRegiMenu();
+                    services.excuteRegiMenu();
                     break;
                 case 2:
                     checkout(input);
                     break;
                 case 3:
-                    manage.cancelReg(input);
+                    services.cancelRegistration();
                     break;
                 case 4:
                     if (exitMode(input)) {
@@ -44,31 +44,6 @@ public class Customer {
                     break;
             }
         }
-    }
-
-    protected void excuteRegiMenu() {
-        menu.showRigstrationMenu();
-        System.out.print("Enter your choice: ");
-        int choice = Main.getValiadInt(input);
-        input.nextLine();
-        switch (choice) {
-            case 1:
-                // vip
-                manage.regPatient(input, "vip");
-                break;
-            case 2:
-                // regular
-                manage.regPatient(input, "regular");
-                break;
-            case 3:
-                System.out.print("press enter to continue: ");
-                input.nextLine();
-                break;
-            default:
-                System.out.println("Wrong choice!!");
-                break;
-        }
-
     }
 
     private void checkout(Scanner input) {
@@ -101,7 +76,7 @@ public class Customer {
                 } else {
                     // ======================== charge section ========================
                     double totalAmount = 0;
-                    int nights = nightSpent(s);
+                    int nights = services.getNightSpent(s);
                     if (nights == 0) {
                         nights = 1;
                     }
@@ -123,20 +98,6 @@ public class Customer {
                 }
             }
         }
-    }
-
-    
-    // ======================== checkout method ========================
-
-    private int nightSpent(Patient s) {
-        int totalNight = 0;
-        LocalDateTime nowDateTime = LocalDateTime.now();
-        LocalDateTime pEnteredDate = s.getRegTime();
-        LocalDate todayDate = nowDateTime.toLocalDate();
-        LocalDate pINDate = pEnteredDate.toLocalDate();
-        long nights = ChronoUnit.DAYS.between(pINDate, todayDate);
-        totalNight = (int) nights;
-        return totalNight;
     }
 
     // ======================== exit mode ========================

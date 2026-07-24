@@ -1,15 +1,19 @@
 import java.util.Scanner;
 
 public class Employee {
-    private HospitalManage manage; 
+    private HospitalManage manage;
     private Scanner input;
     private MenuOptions menu;
-    private  final int password = 2222;
+    private HospitalServices services;
+    private final int password = 2222;
 
-    public Employee(HospitalManage hospitalM, Scanner input) {
+    public Employee(HospitalManage hospitalM, MenuOptions menuObj, HospitalServices services, Scanner input) {
         this.manage = hospitalM;
         this.input = input;
+        this.menu = menuObj;
+        this.services = services;
     }
+
     public void employeeService() {
         boolean serviceRunnig = true;
         while (serviceRunnig) {
@@ -22,13 +26,13 @@ public class Employee {
                     checkRooms();
                     break;
                 case 2:
-                    showPatien( input);
+                    showPatien(input);
                     break;
                 case 3:
-                    menu.excuteRegiMenu();
+                    services.excuteRegiMenu();
                     break;
                 case 4:
-                    manage.cancelReg(input);
+                    services.cancelRegistration();
                     break;
                 case 5:
                     if (exitMode(input))
@@ -43,7 +47,7 @@ public class Employee {
     }
 
     // ======================== Employee service methodes ========================
-    private void showPatien( Scanner input) {
+    private void showPatien(Scanner input) {
         String[] pMenu = { "1. Show All Patients", "2. show specific patient", "3. back" };
         menu.printCustomMenu("Patient Menu", pMenu);
         System.out.print("Enter your chocie: ");
@@ -51,10 +55,10 @@ public class Employee {
         input.nextLine();
         switch (choice) {
             case 1:
-                manage.showAllPatients();
+                services.showAllPatients();
                 break;
             case 2:
-                manage.showSpecificPatient(input);
+                services.showSpecificPatient();
                 break;
             case 3:
                 break;
@@ -74,10 +78,10 @@ public class Employee {
         input.nextLine();
         switch (choice) {
             case 1:
-                manage.checkRoomsAvailable("vip");
+                services.checkRoomsAvailable("vip");
                 break;
-                case 2:
-                manage.checkRoomsAvailable("regular");
+            case 2:
+                services.checkRoomsAvailable("regular");
                 break;
             case 3:
                 return;

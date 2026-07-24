@@ -1,9 +1,5 @@
-import java.util.Scanner;
-
 public class MenuOptions {
-    private Scanner input;
-    private HospitalManage manage;
-
+    
     private String[] mainMenu = { "Select Programm mode:", "1. Employee", "2. Customer", "3. exit Programm" };
     private String[] employeeMenu = { "1. Check Available Rooms", "2. Check Patients ", "3. Add Patients",
             "4. Cancel Patient registration", "5. return to main menu" };
@@ -51,31 +47,6 @@ public class MenuOptions {
 
     public void showRigstrationMenu() {
         printCustomMenu("Registation Menu", registationMenu);
-    }
-
-    protected void excuteRegiMenu() {
-        showRigstrationMenu();
-        System.out.print("Enter your choice: ");
-        int choice = Main.getValiadInt(input);
-        input.nextLine();
-        switch (choice) {
-            case 1:
-                // vip
-                manage.regPatient(input, "vip");
-                break;
-            case 2:
-                // regular
-                manage.regPatient(input, "regular");
-                break;
-            case 3:
-                System.out.print("press enter to continue: ");
-                input.nextLine();
-                break;
-            default:
-                System.out.println("Wrong choice!!");
-                break;
-        }
-
     }
 
 }

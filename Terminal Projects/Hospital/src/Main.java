@@ -2,9 +2,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        HospitalManage manage = new HospitalManage();
-        MenuOptions menus = new MenuOptions();
         try (Scanner input = new Scanner(System.in)) {
+            HospitalManage manage = new HospitalManage();
+            MenuOptions menus = new MenuOptions();
+            HospitalServices services = new HospitalServices(manage, menus, input);
 
             while (true) {
                 menus.showMainMenu();
@@ -13,11 +14,11 @@ public class Main {
                 input.nextLine();
                 switch (choice) {
                     case 1:
-                        Employee emp = new Employee(manage, input);
+                        Employee emp = new Employee(manage,menus,services, input);
                         emp.employeeService();
                         break;
                     case 2:
-                        Customer cMenu = new Customer(manage, input);
+                        Customer cMenu = new Customer(manage,menus,services, input);
                         cMenu.customerService();
                         break;
                     case 3:

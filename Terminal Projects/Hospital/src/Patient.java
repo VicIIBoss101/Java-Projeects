@@ -3,8 +3,8 @@ import java.time.format.DateTimeFormatter;
 
 public class Patient {
     static private int idCount = 0;
-    private int patienId, daysSpent, patientRoom, nightReg;
-    private String patientName, patientStatus, roomType;
+    private int patienId, patientRoom, daysSpent;
+    private String patientName,roomType;
     private LocalDateTime regTime;
 
     public Patient( String patientName, String roomType, int roomNum) {
@@ -12,7 +12,6 @@ public class Patient {
         this.patienId = setID();
         this.roomType = roomType;
         this.patientRoom = roomNum;
-        this.patientStatus = "unkonwn";
         this.regTime = LocalDateTime.now();
     }
 
@@ -28,21 +27,12 @@ public class Patient {
     public int getPatientId() {
         return patienId;
     }
-
-    public int getDaysSpent() {
+    public int getDaysSpent(){
         return daysSpent;
-    }
-
-    public int getRegNights() {
-        return nightReg;
     }
 
     public String getPatientName() {
         return patientName;
-    }
-
-    public String getPatientStatus() {
-        return patientStatus;
     }
 
     public int getPatientRoom() {
