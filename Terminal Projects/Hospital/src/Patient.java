@@ -17,6 +17,9 @@ public class Patient {
 
     // ======================== Stters ========================
 
+    public void setDaySpent(int daySpent){
+        this.daysSpent = daySpent;
+    }
     public int setID() {
         int sID = this.idCount + 1;
         this.idCount ++;

@@ -18,7 +18,7 @@ public class HospitalServices {
     public void regPatient(String roomType) {
         int roomNum = 0;
         ArrayList<Integer> rooms = manage.getRoomsByType(roomType);
-        if (rooms == null) {
+        if (rooms == null || rooms.isEmpty()) {
             System.out.println("Threr is no romm available!!");
             return;
         } else {
@@ -119,6 +119,7 @@ public class HospitalServices {
         LocalDate pINDate = pEnteredDate.toLocalDate();
         long nights = ChronoUnit.DAYS.between(pINDate, todayDate);
         totalNight = (int) nights;
+        s.setDaySpent(totalNight);
         return totalNight;
     }
 

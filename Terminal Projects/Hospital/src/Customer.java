@@ -29,13 +29,13 @@ public class Customer {
                     services.excuteRegiMenu();
                     break;
                 case 2:
-                    checkout(input);
+                    checkout();
                     break;
                 case 3:
                     services.cancelRegistration();
                     break;
                 case 4:
-                    if (exitMode(input)) {
+                    if (exitMode()) {
                         serviceRunnig = false;
                     }
                     break;
@@ -46,7 +46,7 @@ public class Customer {
         }
     }
 
-    private void checkout(Scanner input) {
+    private void checkout() {
         boolean checkingOut = true;
         while (checkingOut) {
             Patient s = null;
@@ -66,6 +66,7 @@ public class Customer {
                         int room = Main.getValiadInt(input);
                         input.nextLine();
                         s = manage.searchByRoomNum(room);
+                        break;
                     default:
                         System.out.println("worng number enterd!");
                         break;
@@ -101,18 +102,17 @@ public class Customer {
     }
 
     // ======================== exit mode ========================
-    private boolean exitMode(Scanner input) {
-        while (true) {
-            System.out.print("Enter confirmation password: ");
-            int enteredCode = Main.getValiadInt(input);
+    private boolean exitMode() {
+        System.out.print("Enter confirmation password: ");
+        int enteredCode = Main.getValiadInt(input);
+        input.nextLine();
+        if (enteredCode == servicePassword) {
+            return true;
+        } else {
+            System.out.println("Wrong password!\nPress Enter");
             input.nextLine();
-            if (enteredCode == servicePassword) {
-                return true;
-            } else {
-                System.out.println("Wrong password!\nPress Enter");
-                input.nextLine();
-                return false;
-            }
+            return false;
         }
+
     }
 }
