@@ -1,13 +1,8 @@
 import java.util.Scanner;
-import java.util.ArrayList;;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        ArrayList<Patient> patientsInof = new ArrayList<>();
-        ArrayList<Integer> vipRoom = new ArrayList<>();
-        availableRoom(vipRoom);
-        ArrayList<Integer> regularRoom = new ArrayList<>();
-        availableRoom(regularRoom);
+        HospitalManage manage = new HospitalManage();
         MenuOptions menus = new MenuOptions();
         try (Scanner input = new Scanner(System.in)) {
 
@@ -18,12 +13,12 @@ public class Main {
                 input.nextLine();
                 switch (choice) {
                     case 1:
-                        Employee emp = new Employee();
-                        emp.employeeService(patientsInof, input, vipRoom, regularRoom);
+                        Employee emp = new Employee(manage, input);
+                        emp.employeeService();
                         break;
                     case 2:
-                        Customer cMenu = new Customer();
-                        cMenu.customerService(input, vipRoom, regularRoom, patientsInof);
+                        Customer cMenu = new Customer(manage, input);
+                        cMenu.customerService();
                         break;
                     case 3:
                         return;
@@ -33,12 +28,6 @@ public class Main {
                         break;
                 }
             }
-        }
-    }
-
-    private static void availableRoom(ArrayList<Integer> romsType) {
-        for (int i = 1; i <= 10; i++) {
-            romsType.add(i);
         }
     }
 

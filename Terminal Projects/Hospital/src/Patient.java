@@ -7,11 +7,10 @@ public class Patient {
     private String patientName, patientStatus, roomType;
     private LocalDateTime regTime;
 
-    public Patient( String patientName, String roomType, int roomNum, int night) {
+    public Patient( String patientName, String roomType, int roomNum) {
         this.patientName = patientName;
         this.patienId = setID();
         this.roomType = roomType;
-        this.nightReg = night;
         this.patientRoom = roomNum;
         this.patientStatus = "unkonwn";
         this.regTime = LocalDateTime.now();
@@ -26,7 +25,7 @@ public class Patient {
     }
 
     // ======================== Getters ========================
-    public int getPationtId() {
+    public int getPatientId() {
         return patienId;
     }
 
@@ -38,15 +37,15 @@ public class Patient {
         return nightReg;
     }
 
-    public String getPationtName() {
+    public String getPatientName() {
         return patientName;
     }
 
-    public String getPationtStatus() {
+    public String getPatientStatus() {
         return patientStatus;
     }
 
-    public int getPationtRoom() {
+    public int getPatientRoom() {
         return patientRoom;
     }
 
