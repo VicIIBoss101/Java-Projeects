@@ -15,15 +15,18 @@ public class Main {
                 switch (choice) {
                     case 1:
                         Employee emp = new Employee(manage,menus,services, input);
+                        clearConsole();
                         emp.employeeService();
                         break;
                     case 2:
                         Customer cMenu = new Customer(manage,menus,services, input);
+                        clearConsole();
                         cMenu.customerService();
                         break;
                     case 3:
                         return;
                     default:
+                        clearConsole();
                         System.out.println("Wrong chocie number entered!!\nPress enter to continue");
                         input.nextLine();
                         break;
@@ -40,6 +43,18 @@ public class Main {
                 System.out.print("-".repeat(10) + "\n" + "Please Enter just numbers: ");
                 input.nextLine();
             }
+        }
+    }
+    public static void clearConsole() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception e) {
+            for (int i = 0; i < 50; i++) System.out.println();
         }
     }
 }
