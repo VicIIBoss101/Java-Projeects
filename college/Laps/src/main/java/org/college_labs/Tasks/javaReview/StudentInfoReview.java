@@ -6,7 +6,8 @@ public class StudentInfoReview {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter Student name: ");
-        String sName = input.nextLine();
+        final String sName = input.nextLine();
+        // here we set the name as constant
         System.out.print("Enter Student age: ");
         int sAge = input.nextInt();
         int[] marks = setMarks(input);
