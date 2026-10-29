@@ -17,9 +17,9 @@ public class StudentInfoReview {
     }
 
     static void printStudentInfo(String sName, int sAge, int[] marks) {
-        System.out.println("=".repeat(5) + "Student Info " + "=".repeat(5));
-        System.out.println("Name: " + sName + "\n" + "Age: " + sAge);
-        printMarks(marks);
+        System.out.println("=".repeat(5) + " Student Info " + "=".repeat(5));
+        System.out.println(sName + " is a " + sAge + " Years Old ");
+//        printMarks(marks);
         System.out.println("The Average: " + studentAvg(marks));
         // simple method to print the student info
     }
