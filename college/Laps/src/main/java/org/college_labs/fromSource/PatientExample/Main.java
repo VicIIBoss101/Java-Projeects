@@ -1,4 +1,6 @@
-package org.college_labs.At_lap5;
+package org.college_labs.fromSource.PatientExample;
+
+import org.college_labs.At_lap5.Patient;
 
 public class Main {
     public static void main(String[] args) {

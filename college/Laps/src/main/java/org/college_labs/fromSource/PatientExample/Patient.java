@@ -1,4 +1,4 @@
-package org.college_labs.At_lap5;
+package org.college_labs.fromSource.PatientExample;
 
 class Patient {
     // State
