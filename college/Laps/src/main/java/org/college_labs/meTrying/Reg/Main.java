@@ -6,8 +6,8 @@ public class Main {
         regAli.displayInfo();
         CourseReg regNoor = new CourseReg("Noor" , "Computer graph" , 20);
         regNoor.displayInfo();
-        regNoor.hours = 25;
         CourseReg regNoorCopy = new CourseReg(regNoor);
+        regNoorCopy.hours = 25;
         regNoorCopy.displayInfo();
     }
 }
