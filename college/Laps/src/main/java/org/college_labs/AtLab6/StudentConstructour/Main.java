@@ -1,4 +1,4 @@
-package org.college_labs.fromSource.StudentConstructour;
+package org.college_labs.AtLab6.StudentConstructour;
 
 public class Main {
     public static void main(String[] args) {
